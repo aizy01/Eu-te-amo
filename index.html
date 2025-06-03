@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eu te amo</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: white;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    .foto img {
+      margin-top: 20px;
+      max-width: 90%;
+      border-radius: 20px;
+    }
+
+    .contador {
+      margin-top: 30px;
+      font-size: 1.2em;
+    }
+
+    .contador strong {
+      font-size: 1.4em;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .mensagem {
+      max-width: 700px;
+      margin: 30px auto;
+      padding: 0 15px;
+      line-height: 1.6;
+      font-size: 1.1em;
+    }
+
+    .cora {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: url('https://i.imgur.com/7JdK5Wg.png') no-repeat center;
+      background-size: cover;
+      animation: flutuar 10s linear infinite;
+    }
+
+    @keyframes flutuar {
+      0% { transform: translateY(100vh); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-10vh); opacity: 0; }
+    }
+
+    .player-box {
+      display: flex;
+      align-items: center;
+      background: #5c2c2c;
+      color: white;
+      border-radius: 15px;
+      padding: 15px;
+      max-width: 400px;
+      margin: 20px auto;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      font-family: sans-serif;
+      position: relative;
+    }
+
+    .player-box img {
+      width: 60px;
+      height: 60px;
+      border-radius: 10px;
+      margin-right: 15px;
+    }
+
+    .player-info {
+      flex-grow: 1;
+    }
+
+    .player-info h4 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .player-info p {
+      margin: 2px 0 8px;
+      font-size: 14px;
+      color: #e0e0e0;
+    }
+
+    .audio-progress {
+      width: 100%;
+      height: 5px;
+      background: #996060;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .audio-progress-bar {
+      height: 100%;
+      width: 0%;
+      background: white;
+      transition: width 0.3s;
+    }
+
+    .play-button {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: white;
+      color: #5c2c2c;
+      border: none;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .play-button:hover {
+      background-color: #ddd;
+    }
+.carousel-touch {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  width: 90%;
+  max-width: 400px;
+  margin: 30px auto;
+  border-radius: 20px;
+  scroll-behavior: smooth;
+}
+
+.carousel-touch img {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  margin-right: 10px;
+  object-fit: cover;
+}
+.carousel-touch {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  width: 90%;
+  max-width: 400px;
+  margin: 30px auto;
+  border-radius: 20px;
+  scroll-behavior: smooth;
+  height: auto; /* permite altura ajustável */
+}
+
+.carousel-touch img {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  margin-right: 10px;
+  object-fit: cover;
+  height: 400px; /* altura fixa para manter o padrão */
+  width: 100%;
+}
+  </style>
+</head>
+<body>
+
+  <div class="player-box">
+    <img src="Amor.jpg" alt="Capa do Álbum">
+    <div class="player-info">
+      <h4>É Amor</h4>
+      <p>Jorge & Mateus</p>
+      <div class="audio-progress">
+        <div class="audio-progress-bar" id="progress-bar"></div>
+      </div>
+    </div>
+    <button id="playPauseBtn" class="play-button">▶</button>
+    <audio id="audio">
+      <source src="Amor.mp3" type="audio/mpeg">
+      Seu navegador não suporta áudio.
+    </audio>
+  </div>
+
+<div class="carousel-touch">
+  <img src="efoto.jpg" alt="Foto 1">
+  <img src="fotodois.jpg" alt="Foto 2">
+  <img src="hello.jpg" alt="Foto 3">
+</div>
+  <hr style="border: none; height: 2px; background: white; margin: 30px auto; width: 90%;">
+
+  <div class="contador">
+    <strong>💕 Eu te amo há:</strong>
+    <div id="tempo">calculando...</div>
+  </div>
+  <hr style="border: none; height: 2px; background: white; margin: 30px auto; width: 90%;">
+  <div class="mensagem">
+    Cortez, vc foi a melhor coisa que me aconteceu, conhecer vc e ter você próximo de mim foi uma coisa inexplicável, você me faz tão bem e eu sinto que não consigo mais ficar sem você, sua presença anima meu dia e melhora 100% minha vida.
+    <br><br>
+    Obrigado por ter se aproximado de mim, sei que sou bem difícil e às vezes muito complicada, mas quero e vou te fazer a pessoa mais feliz do mundo.
+    <br><br>
+    Sei que podemos ter desentendimentos e que às vezes a situação poderá ficar difícil, mas segura na minha mão e não solta, vamo enfrentar às coisas juntos, mesmo que seja difícil e complicado.
+    <br><br>
+    A gente se aproximou tão rápido, parece que estava predestinado a gente se encontrar e ficar próximos, não sei explicar mas eu sei que é amor, pois todos os dias eu penso em você.
+    <br><br>
+    Eu sei que é amor, não porque digo que te amo, mas sim porque todas as vezes que vejo nossas fotos, eu planejo meu mundo com você.
+    <br><br>
+    Eu sei que não é fácil, nunca foi e nunca será... o amor será complexo, tanto pela forma de demonstrar, quanto na forma de sentir. Mas quero viver esse amor com <strong>VOCÊ</strong>.
+  </div>
+
+  <script>
+    // Contador
+    const tempoElemento = document.getElementById("tempo");
+    const dataInicio = new Date("2025-03-20T00:00:00");
+
+    function atualizaTempo() {
+      const agora = new Date();
+      const diff = agora - dataInicio;
+
+      const segundos = Math.floor(diff / 1000);
+      const minutos = Math.floor(segundos / 60);
+      const horas = Math.floor(minutos / 60);
+      const dias = Math.floor(horas / 24);
+      const meses = Math.floor(dias / 30.44);
+      const anos = Math.floor(meses / 12);
+
+      const mesesRestantes = meses % 12;
+      const diasRestantes = dias % 30;
+      const horasRestantes = horas % 24;
+      const minutosRestantes = minutos % 60;
+      const segundosRestantes = segundos % 60;
+
+      tempoElemento.textContent = `${anos} anos, ${mesesRestantes} meses, ${diasRestantes} dias, ${horasRestantes} horas, ${minutosRestantes} minutos e ${segundosRestantes} segundos`;
+    }
+
+    setInterval(atualizaTempo, 1000);
+    atualizaTempo();
+
+    // Player
+    const audio = document.getElementById("audio");
+    const progressBar = document.getElementById("progress-bar");
+    const playBtn = document.getElementById("playPauseBtn");
+
+    playBtn.addEventListener("click", () => {
+      if (audio.paused) {
+        audio.play();
+        playBtn.textContent ="❚❚";
+      } else {
+        audio.pause();
+        playBtn.textContent = "▶";
+      }
+    });
+
+    audio.addEventListener("timeupdate", () => {
+      const percent = (audio.currentTime / audio.duration) * 100;
+      progressBar.style.width = percent + "%";
+    });
+
+  const carousel = document.querySelector(".carousel");
+  const images = document.querySelectorAll(".carousel img");
+  const prevBtn = document.querySelector(".prev");
+  const nextBtn = document.querySelector(".next");
+
+  let index = 0;
+
+  function updateCarousel() {
+    carousel.style.transform = `translateX(-${index * 100}%)`;
+  }
+
+  prevBtn.addEventListener("click", () => {
+    index = (index - 1 + images.length) % images.length;
+    updateCarousel();
+  });
+
+  nextBtn.addEventListener("click", () => {
+    index = (index + 1) % images.length;
+    updateCarousel();
+  });
+  </script>
+  <footer style="text-align: center; padding: 20px; color: #ccc; font-size: 14px;">
+  © 2025 — Criado com carinho por @aizyxz
+</footer>
+</body>
+</html>
