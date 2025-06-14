@@ -218,28 +218,33 @@
     const tempoElemento = document.getElementById("tempo");
     const dataInicio = new Date("2025-03-20T00:00:00");
 
-    function atualizaTempo() {
-      const agora = new Date();
-      const diff = agora - dataInicio;
+  function atualizaTempo() {
+  const agora = new Date();
 
-      const segundos = Math.floor(diff / 1000);
-      const minutos = Math.floor(segundos / 60);
-      const horas = Math.floor(minutos / 60);
-      const dias = Math.floor(horas / 24);
-      const meses = Math.floor(dias / 30.44);
-      const anos = Math.floor(meses / 12);
+  let anos = agora.getFullYear() - dataInicio.getFullYear();
+  let meses = agora.getMonth() - dataInicio.getMonth();
+  let dias = agora.getDate() - dataInicio.getDate();
 
-      const mesesRestantes = meses % 12;
-      const diasRestantes = dias % 30;
-      const horasRestantes = horas % 24;
-      const minutosRestantes = minutos % 60;
-      const segundosRestantes = segundos % 60;
+  if (dias < 0) {
+    meses--;
+    const mesAnterior = new Date(agora.getFullYear(), agora.getMonth(), 0);
+    dias += mesAnterior.getDate();
+  }
 
-      tempoElemento.textContent = `${anos} anos, ${mesesRestantes} meses, ${diasRestantes} dias, ${horasRestantes} horas, ${minutosRestantes} minutos e ${segundosRestantes} segundos`;
-    }
+  if (meses < 0) {
+    anos--;
+    meses += 12;
+  }
 
-    setInterval(atualizaTempo, 1000);
-    atualizaTempo();
+  const horas = agora.getHours();
+  const minutos = agora.getMinutes();
+  const segundos = agora.getSeconds();
+
+  tempoElemento.textContent = `${anos} anos, ${meses} meses, ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos`;
+}
+
+setInterval(atualizaTempo, 1000);
+atualizaTempo();
 
     // Player
     const audio = document.getElementById("audio");
